@@ -19,7 +19,7 @@ class SendForm extends React.Component {
             body: this.state.value
         };
 
-        fetch('http://localhost:8080/send', requestOptions)
+        fetch('http://193.47.69.248:8100/send', requestOptions)
             .then(response => console.log("got response", response));
 
         this.setState({ value: '' });
