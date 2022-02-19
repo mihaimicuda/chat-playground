@@ -23,7 +23,7 @@ class ChatArea extends React.Component {
     return (
       <div className='chatArea'>
         <SockJsClient
-          url={'http://localhost:8080/ws-message'}
+          url={'http://localhost:8100/ws-message'}
           topics={['/topic/message']}
           onConnect={this.onConnected}
           onDisconnect={console.log("Disconnected!")}
