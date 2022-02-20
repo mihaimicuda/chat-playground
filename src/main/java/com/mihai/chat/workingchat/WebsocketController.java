@@ -26,12 +26,7 @@ public class WebsocketController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	} 
 
-    @GetMapping("/send")
-    public ResponseEntity<Void> test() {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
+    @CrossOrigin
     @SendTo("/topic/message")
     public String hello(@Payload String text) {
         return text;
