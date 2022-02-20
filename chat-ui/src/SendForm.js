@@ -19,7 +19,18 @@ class SendForm extends React.Component {
             body: this.state.value
         };
 
-        fetch('http://localhost:8100/send', requestOptions)
+        let url = "";
+        switch (process.env.NODE_ENV) {
+            case 'production':
+                url = 'http://193.47.69.248:8100/send';
+                break;
+            case 'development':
+            default:
+                url = 'http://localhost:8100/send';
+        }
+
+        console.log("calling", url);
+        fetch(url, requestOptions)
             .then(response => console.log("got response", response));
 
         this.setState({ value: '' });
@@ -33,7 +44,7 @@ class SendForm extends React.Component {
 
     handleKeyPress(event) {
         console.log("event", event);
-        if(event.code === 'Enter') {
+        if (event.code === 'Enter') {
             this.handleSubmit(event);
         }
     }
@@ -43,7 +54,7 @@ class SendForm extends React.Component {
             <div className='sendForm'>
                 <form onSubmit={this.handleSubmit}>
                     <div className='combo'>
-                        <textarea value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
+                        <textarea value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
                         <input type="submit" value="Send" />
                     </div>
 
