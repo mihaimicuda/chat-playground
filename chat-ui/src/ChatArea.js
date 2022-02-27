@@ -20,10 +20,21 @@ class ChatArea extends React.Component {
   }
 
   render() {
+    let url = "";
+    switch (process.env.NODE_ENV) {
+      case 'production':
+        url = 'http://193.47.69.248:8100/send';
+        break;
+      case 'development':
+      default:
+        url = 'http://localhost:8100/send';
+    }
+
+
     return (
       <div className='chatArea'>
         <SockJsClient
-          url={'http://localhost:8100/ws-message'}
+          url={url}
           topics={['/topic/message']}
           onConnect={this.onConnected}
           onDisconnect={console.log("Disconnected!")}
