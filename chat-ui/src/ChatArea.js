@@ -23,11 +23,11 @@ class ChatArea extends React.Component {
     let url = "";
     switch (process.env.NODE_ENV) {
       case 'production':
-        url = 'http://193.47.69.248:8100/send';
+        url = 'http://193.47.69.248:8100/ws-message';
         break;
       case 'development':
       default:
-        url = 'http://localhost:8100/send';
+        url = 'http://localhost:8100/ws-message';
     }
 
 
