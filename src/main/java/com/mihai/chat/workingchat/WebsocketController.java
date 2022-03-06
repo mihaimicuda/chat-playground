@@ -7,7 +7,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +25,7 @@ public class WebsocketController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	} 
 
-    @CrossOrigin
+    // @CrossOrigin
     @SendTo("/topic/message")
     public String hello(@Payload String text) {
         return text;
